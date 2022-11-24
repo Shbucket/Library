@@ -42,7 +42,7 @@ function closeForm(){
 const btn = document.querySelector('button');
 btn.addEventListener("click", openForm())
 
-
+const submit = document.getElementById('submit')
 
 
 
