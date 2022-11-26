@@ -1,14 +1,73 @@
+* {
+  box-sizing: border-box;
+}
 
-html{
-    margin: 0;
-    height: 100%;
+html {
+  margin: 0;
+  height: 100%;
+}
+
+h1 {
+  text-align: center;
+}
+#popForm {
+  display: none;
+  position: relative;
+  text-align: center;
+  width: 10%;
+}
+#popForm input[type="text"] {
+  border: solid 3px black;
+  
+}
+#popForm label{
+    font-size: 2em;
     
 }
 
-h1{
-    text-align: center;
-
+.container {
+  display: flex;
+  justify-content: center;
+}
+.container #add{
+    background-color: lightblue;
+    color: black;
+    font-weight: bold;
+    font-size: 1.5em;
+    padding: 10px;
+    border-radius: 8px;
 }
 
-
-
+.library {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.card {
+  width: 20%;
+  background-color: bisque;
+  border: 3px black solid;
+  margin: 5px 5px;
+  padding: 5px;
+  font-size: 1.5em;
+  text-align: center;
+}
+#form{
+    display: flex;
+    justify-content: center;
+}
+.submit {
+    font-weight: bold;
+    font-size: 1.5em;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: aqua;
+    margin: 10px 10px;
+}
+.cancel{
+     font-weight: bold;
+    font-size: 1.5em;
+    padding: 10px;
+    border-radius: 8px;
+     margin: 10px 10px;
+}
