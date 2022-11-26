@@ -36,7 +36,6 @@ function displayBooks() {
     //Link the data attribute of the remove button to the array and card
     removeBookButton.dataset.linkedArray = index;
     index++;
-
     console.log("show me the current array:", myLibrary);
     card.appendChild(removeBookButton);
 
@@ -52,6 +51,30 @@ function displayBooks() {
       displayBooks();
     }
 
+    //Checks if book was read or not
+    const readStatusButton = document.createElement("button");
+    readStatusButton.classList.add("read-status-button");
+    readStatusButton.textContent = "Toggle Read Status";
+
+    readStatusButton.dataset.linkedArray = index;
+    card.appendChild(readStatusButton);
+
+    readStatusButton.addEventListener("click", toggleReadStatus);
+
+    function toggleReadStatus() {
+      let bookToggle = readStatusButton.dataset.linkedArray;
+      book.prototype = object.create(book.prototype);
+      const toggleBook = new book();
+      if (myLibrary[parseInt(retrieveBook)].read == "Yes") {
+        toggleBook.read = "No";
+        myLibrary[parseInt(retrieveBook)].read == toggleBook.read;
+      } else if (myLibrary[parseInt(retrieveBook)].read == "Yes") {
+         toggleBook.read = "Yes";
+         myLibrary[parseInt(retrieveBook)].read == toggleBook.read;
+      }
+      displayBooks()
+    }
+    //Grabs the info that needs to be displayed
     for (let key in myLibrarys) {
       console.log(`${key}: ${myLibrarys[key]}`);
       const para = document.createElement("p");

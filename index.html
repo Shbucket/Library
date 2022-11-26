@@ -21,14 +21,18 @@
           <label for="pages"><strong>Pages:</strong></label>
           <input type="text" name="pages" id="pages" required />
           <label for="read"><strong>Read:</strong></label>
-          <input type="checkbox" name="read" id="read" required />
-          <button type="submit" class="submit" onclick="intakeForm()">
+         <select name="read" id="read">
+          <option value="yes">Yes</option>
+          <option value="yes">No</option>
+         </select>
+         
+        </form>
+         <button type="submit" class="submit" onclick="intakeForm()">
             <strong>Add</strong>
           </button>
           <button type="button" class="cancel" onclick="closeForm()">
             <strong>Close</strong>
           </button>
-        </form>
       </div>
     </div>
 
