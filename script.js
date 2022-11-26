@@ -17,40 +17,40 @@ function addBookToLibrary(title, author, pages, read) {
 //Display books on page
 function displayBooks() {
   const library = document.getElementsByClassName("library");
-let index = 0;
+  let index = 0;
   const removeDivs = document.querySelectorAll(".card");
   for (let i = 0; i < removeDivs.length; i++) {
     removeDivs[i].remove();
   }
-  const removeBookButton = document.createElement('button');
-  removeBookButton.classList.add('remove-book-button');
-  removeBookButton.textContent = 'Remove From Library'
-  console.log('show me the current array:', myLibrary);
 
-
-
-
+  //Create Book Element
   myLibrary.forEach((myLibrarys) => {
-    
     const card = document.createElement("div");
     card.classList.add("card");
     library[0].appendChild(card);
 
-    //Create Remove book Button 
+    //Create Remove book Button
     const removeBookButton = document.createElement("button");
     removeBookButton.classList.add("remove-book-button");
     removeBookButton.textContent = "Remove From Library";
-    console.log("show me the current array:", myLibrary);
-
-
-
-
-
+    //Link the data attribute of the remove button to the array and card
+    removeBookButton.dataset.linkedArray = index;
     index++;
-    const num = document.createElement("h1");
-    num.textContent = index;
-    card.appendChild(num);
-    card.appendChild(removeBookButton)
+
+    console.log("show me the current array:", myLibrary);
+    card.appendChild(removeBookButton);
+
+    //Remove Book Function
+    removeBookButton.addEventListener("click", removeBook);
+
+    function removeBook() {
+      let retrieveBook = removeBookButton.dataset.linkedArray;
+
+      console.log("attempting to remove", parseInt(retrieveBook));
+      myLibrary.splice(parseInt(retrieveBook), 1);
+      card.remove();
+      displayBooks();
+    }
 
     for (let key in myLibrarys) {
       console.log(`${key}: ${myLibrarys[key]}`);
