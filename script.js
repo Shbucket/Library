@@ -17,13 +17,14 @@ function addBookToLibrary(title, author, pages, read) {
 //Display books on page
 function displayBooks() {
   const library = document.getElementsByClassName("library");
-  let index = 0;
   const removeDivs = document.querySelectorAll(".card");
+  //Remove previously display cards
   for (let i = 0; i < removeDivs.length; i++) {
     removeDivs[i].remove();
   }
 
   //Create Book Element
+  let index = 0;
   myLibrary.forEach((myLibrarys) => {
     const card = document.createElement("div");
     card.classList.add("card");
@@ -35,7 +36,6 @@ function displayBooks() {
     removeBookButton.textContent = "Remove From Library";
     //Link the data attribute of the remove button to the array and card
     removeBookButton.dataset.linkedArray = index;
-    index++;
     console.log("show me the current array:", myLibrary);
     card.appendChild(removeBookButton);
 
@@ -63,16 +63,18 @@ function displayBooks() {
 
     function toggleReadStatus() {
       let bookToggle = readStatusButton.dataset.linkedArray;
-      book.prototype = object.create(book.prototype);
+      book.prototype = Object.create(book.prototype);
       const toggleBook = new book();
-      if (myLibrary[parseInt(retrieveBook)].read == "Yes") {
+//Coverts string from book array to a number so i can access it in the array and change its properties
+      if (myLibrary[parseInt(bookToggle)].read == "Yes") {
         toggleBook.read = "No";
-        myLibrary[parseInt(retrieveBook)].read == toggleBook.read;
-      } else if (myLibrary[parseInt(retrieveBook)].read == "Yes") {
-         toggleBook.read = "Yes";
-         myLibrary[parseInt(retrieveBook)].read == toggleBook.read;
+        myLibrary[parseInt(bookToggle)].read = toggleBook.read;
+      } else if (myLibrary[parseInt(bookToggle)].read == "No") {
+        toggleBook.read = "Yes";
+        myLibrary[parseInt(bookToggle)].read = toggleBook.read;
       }
-      displayBooks()
+
+      displayBooks();
     }
     //Grabs the info that needs to be displayed
     for (let key in myLibrarys) {
@@ -81,6 +83,7 @@ function displayBooks() {
       para.textContent = `${key}: ${myLibrarys[key]}`;
       card.appendChild(para);
     }
+    index++;
   });
 }
 
@@ -101,6 +104,9 @@ function intakeForm() {
   let Author = document.getElementById("author").value;
   let Pages = document.getElementById("pages").value;
   let Read = document.getElementById("read").value;
+  if ((Title == "")||(Author == "")||(Pages == "")||(Read == "")) {
+    return;
+  }
   addBookToLibrary(Title, Author, Pages, Read);
 }
 
